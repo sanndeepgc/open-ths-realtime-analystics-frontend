@@ -1,0 +1,29 @@
+export interface TopicMetrics {
+  name: string;
+  partitionCount: number;
+  messageCount: number;
+  bytesPerSecond: number;
+}
+
+export interface ConsumerMetrics {
+  id: string;
+  groupId: string;
+  activeTopics: string[];
+  lag: number;
+  status: 'ACTIVE' | 'IDLE' | 'STALLED';
+}
+
+export interface ProducerMetrics {
+  id: string;
+  clientId: string;
+  targetTopic: string;
+  throughput: number; // msgs/sec
+  errorRate: number;
+}
+
+export interface FluxDashboardData {
+  topics: TopicMetrics[];
+  consumers: ConsumerMetrics[];
+  producers: ProducerMetrics[];
+  timestamp: string;
+}
